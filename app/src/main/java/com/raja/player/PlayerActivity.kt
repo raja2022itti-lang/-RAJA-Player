@@ -143,8 +143,20 @@ class PlayerActivity : AppCompatActivity(), Player.Listener {
         super.onDestroy()
     }
 
-    private fun validUri(i: Intent?): Uri? =
-        i?.data?.takeIf { it.scheme == "http" || it.scheme == "https" }
+    /** Takes the URL from Intent data first, then from common text extras used by other apps. */
+    private fun validUri(i: Intent?): Uri? {
+        if (i == null) return null
+        fun ok(u: Uri?) = u?.takeIf { it.scheme == "http" || it.scheme == "https" }
+        ok(i.data)?.let { return it }
+        val extras = i.extras ?: return null
+        val keys = listOf(Intent.EXTRA_TEXT, "url", "link", "uri", "video_url", "stream")
+        for (key in keys) {
+            val text = extras.get(key)?.toString()?.trim().orEmpty()
+            val found = text.split(Regex("\\s+")).firstOrNull { it.startsWith("http://") || it.startsWith("https://") }
+            ok(found?.let { Uri.parse(it) })?.let { return it }
+        }
+        return null
+    }
 
     private fun createPlayer() {
         val loadControl = DefaultLoadControl.Builder()
