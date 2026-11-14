@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <LinearLayout style="@style/AdjustRow">
+        <TextView style="@style/AdjustLabel" android:text="@string/label_brightness" />
+        <SeekBar android:id="@+id/seekBrightness" style="@style/AdjustSeek" />
+        <TextView android:id="@+id/valBrightness" style="@style/AdjustValue" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/AdjustRow">
+        <TextView style="@style/AdjustLabel" android:text="@string/label_contrast" />
+        <SeekBar android:id="@+id/seekContrast" style="@style/AdjustSeek" />
+        <TextView android:id="@+id/valContrast" style="@style/AdjustValue" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/AdjustRow">
+        <TextView style="@style/AdjustLabel" android:text="@string/label_saturation" />
+        <SeekBar android:id="@+id/seekSaturation" style="@style/AdjustSeek" />
+        <TextView android:id="@+id/valSaturation" style="@style/AdjustValue" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/AdjustRow">
+        <TextView style="@style/AdjustLabel" android:text="@string/label_sharpness" />
+        <SeekBar android:id="@+id/seekSharpness" style="@style/AdjustSeek" />
+        <TextView android:id="@+id/valSharpness" style="@style/AdjustValue" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/adjust_note"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp" />
+
+</LinearLayout>

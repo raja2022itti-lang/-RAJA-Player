@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <android.opengl.GLSurfaceView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/subtitleImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="200dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/subtitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:background="#99000000"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/statusView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="32dp"
+        android:background="#CC000000"
+        android:padding="12dp"
+        android:textColor="#FFC400"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <!-- Touch control only. It is not focusable so the remote keeps seeking; the remote uses the red key. -->
+    <Button
+        android:id="@+id/enhanceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="32dp"
+        android:backgroundTint="#333333"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="#FFC400"
+        android:textSize="18sp"
+        android:text="@string/enh_btn" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="#FFC400"
+        android:visibility="gone" />
+
+</FrameLayout>
