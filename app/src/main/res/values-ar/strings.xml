@@ -52,4 +52,5 @@
     <string name="info_not4k">الشاشة تخرج بدقة أقل من 4K. اضبط دقة الإخراج على 4K من إعدادات العرض في التلفزيون.</string>
     <string name="enh_btn">تحسين 4K: %1$s</string>
     <string name="on_short">تشغيل</string>
+    <string name="info_auto_src">التلقائي يعمل فقط مع مصادر حتى 1080p. اختر «محسّن» لتشغيله مع هذا المصدر.</string>
 </resources>

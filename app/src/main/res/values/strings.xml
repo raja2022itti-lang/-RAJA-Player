@@ -52,4 +52,5 @@
     <string name="info_not4k">The TV output is below 4K. Set the output resolution to 4K in the TV display settings.</string>
     <string name="enh_btn">4K enhancement: %1$s</string>
     <string name="on_short">On</string>
+    <string name="info_auto_src">Auto works only with sources up to 1080p. Choose Enhanced to turn it on for this source.</string>
 </resources>

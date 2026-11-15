@@ -274,6 +274,7 @@ class PlayerActivity : AppCompatActivity(), Player.Listener {
         val state = getString(if (renderer.enhanced) R.string.on_short else R.string.off)
         var message = getString(R.string.enh_btn, state)
         if (renderer.enhanced && !displayIs4k()) message += "\n" + getString(R.string.info_not4k)
+        if (!renderer.enhanced && settings.enhance == EnhanceMode.AUTO) autoBlockReason()?.let { message += "\n" + getString(it) }
         showStatus(message, 5_000L)
     }
 
@@ -322,6 +323,14 @@ class PlayerActivity : AppCompatActivity(), Player.Listener {
         return mode.physicalWidth to mode.physicalHeight
     }
 
+    /** Why Auto keeps enhancement off, or null when Auto would be on (or the setting is not Auto). */
+    private fun autoBlockReason(): Int? {
+        if (settings.enhance != EnhanceMode.AUTO) return null
+        if (!displayIs4k()) return R.string.info_not4k
+        val h = videoSize?.height ?: 0
+        return if (h > 1080) R.string.info_auto_src else null
+    }
+
     private fun displayIs4k(): Boolean {
         val (w, h) = displayPixels()
         return maxOf(w, h) >= 3840
@@ -339,6 +348,7 @@ class PlayerActivity : AppCompatActivity(), Player.Listener {
             getString(R.string.info_dropped, droppedTotal.toInt())
         )
         if (!displayIs4k()) lines += getString(R.string.info_not4k)
+        autoBlockReason()?.let { lines += getString(it) }
         showStatus(lines.joinToString("\n"), 10_000L)
     }
 
